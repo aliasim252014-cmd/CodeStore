@@ -1,12 +1,17 @@
-const urunler = [
-    { isim: "Oyun Scripti V1", fiyat: "10$", yazar: "Ahmet" },
-    { isim: "Web Paneli", fiyat: "25$", yazar: "Mehmet" }
-];
+const supabaseUrl = 'BURAYA_SUPABASE_URL_ADRESINI_YAZ'; 
+const supabaseKey = 'sb_publishable_293ICFz4pQCpwCxoroVhTg_769LovHX';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-const grid = document.getElementById('urun-grid');
+async function urunleriGetir() {
+    const { data, error } = await supabase.from('urunler').select('*');
+    const grid = document.getElementById('urun-grid');
 
-function listele() {
-    grid.innerHTML = urunler.map(u => `
+    if (error) {
+        grid.innerHTML = `<p>Hata: ${error.message}</p>`;
+        return;
+    }
+
+    grid.innerHTML = data.map(u => `
         <div class="card">
             <h3>${u.isim}</h3>
             <p>Fiyat: ${u.fiyat}</p>
@@ -16,9 +21,9 @@ function listele() {
     `).join('');
 }
 
-// Mod Değiştirici
+// Tema değiştirici
 document.getElementById('theme-btn').addEventListener('click', () => {
     document.body.classList.toggle('dark');
 });
 
-listele();
+urunleriGetir();
