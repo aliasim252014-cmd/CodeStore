@@ -1,7 +1,8 @@
 :root { --bg: #f4f4f4; --text: #333; --card: #fff; }
 body.dark { --bg: #121212; --text: #eee; --card: #1e1e1e; }
-body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; }
+body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; transition: 0.3s; }
 nav { display: flex; justify-content: space-between; padding: 20px; background: #6200ea; color: white; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+.container { padding: 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
 .card { background: var(--card); padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-button { cursor: pointer; padding: 10px; border: none; border-radius: 5px; }
+button { cursor: pointer; padding: 10px; border: none; border-radius: 5px; background: #6200ea; color: white; }
